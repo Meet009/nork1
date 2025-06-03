@@ -39,5 +39,6 @@ test:
 #
 production:
   <<: *default
+  url: <%= ${{ Postgres.DATABASE_URL }} %>
   database: blog_production
 
