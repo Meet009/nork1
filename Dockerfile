@@ -28,10 +28,13 @@ ENV RAILS_ENV="production" \
 # Throw-away build stage to reduce size of final image
 FROM base AS build
 
-# Install packages needed to build gems
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential default-libmysqlclient-dev git pkg-config && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+    apt-get install -y --no-install-recommends \
+    build-essential \
+    libpq-dev \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
