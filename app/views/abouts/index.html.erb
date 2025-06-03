@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Abouts" %>
+
+<%= button_to "LogOut", session_path , method: :delete %>
+
+<div id="abouts">
+  <% @abouts.each do |about| %>
+    <%= render about %>
+    <p>
+      <%= link_to "Show this about", about %>
+    </p>
+  <% end %>
+</div>
+
+
+  <label><strong>Last updated at: </strong></lable>: <time data-format="%B %e, %Y %l:%M%P"
+  data-local="time"
+  datetime="2013-11-27T23:43:22Z">November 27, 2013 11:43pm</time>
+
+<%= link_to "New about", new_about_path %>

@@ -1,0 +1,109 @@
+<%= form_with model: @about do |f| %>
+  <% if about.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(about.errors.count, "error") %> prohibited this about from being saved:</h2>
+
+      <ul>
+        <% about.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :name, style: "display: block" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :info, style: "display: block" %>
+    <%= f.rich_textarea :info %>
+  </div>
+
+  <section>
+    <%= f.fields_for :skills do |skill| %>
+      <div>
+        <%= skill.label :skill_name %>
+        <%= skill.text_field :skill_name %>
+      </div>
+    <% end %>
+  </section>
+
+  <section>
+    <h3>Experiences</h3>
+
+    <%= f.fields_for :experiences do |experience| %>
+      <li>
+
+        <div>
+          <%= experience.label :comp_name %>
+          <%= experience.text_field :comp_name %>
+        </div>
+
+        <div>
+          <%= experience.label :start_date %>
+          <%= experience.date_field :start_date %>
+        </div>
+
+        <div>
+          <%= experience.label :end_date %>
+          <%= experience.date_field :end_date %>
+        </div>
+
+      </li>
+    <% end %>
+  </section>
+
+
+  <section>
+    <h3>Awards</h3>
+
+    <%= f.fields_for :awards do |award| %>
+        <div>
+          <%= award.label :award_name %>
+          <%= award.text_field :award_name %>
+        </div>
+    <% end %>
+  </section>
+
+    <section>
+    <h3>Certificates</h3>
+
+    <%= f.fields_for :certficates do |certficate| %>
+        <div>
+          <%= certficate.label :cert_name %>
+          <%= certficate.text_field :cert_name %>
+        </div>
+    <% end %>
+  </section>
+
+  <section>
+    <h3>Projects</h3>
+
+    <%= f.fields_for :projects do |project| %>
+      <li>
+
+        <div>
+          <%= project.label :heading %>
+          <%= project.text_field :heading %>
+        </div>
+
+        <div>
+          <%= project.label :project_info %>
+          <%= project.text_field :project_info %>
+        </div>
+
+        <div>
+          <%= project.label :links %>
+          <%= project.text_field :links %>
+        </div>
+
+      </li>
+    <% end %>
+  </section>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

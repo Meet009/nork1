@@ -1,0 +1,23 @@
+<div>
+    <%= f.fields_for :experiences do |experience| %>
+      <div>
+        <%= experience.label :comp_name, style: "display: block" %>
+        <%= experience.text_field :comp_name %>
+      </div>
+      <div>
+        <%= experience.label :start_date, style: "display: block" %>
+        <%= experience.text_field :start_date %>
+      </div>
+      <div>
+        <%= experience.label :end_date, style: "display: block" %>
+        <%= experience.text_field :end_date %>
+      </div>
+
+      <div>
+        <%= f.label :info, style: "display: block" %>
+        <%= f.rich_textarea :info %>
+      </div>
+
+    <% end %>
+    <%= f.rich_textarea :info %>
+</div>  
